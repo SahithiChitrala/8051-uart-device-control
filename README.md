@@ -1,62 +1,60 @@
-# 8051 UART Based Device Control
+# 8051 UART Based Home Automation
 
 ## 📌 Project Overview
 
-This project demonstrates UART-based serial communication using the 8051 microcontroller to control external devices through GPIO pins.
+This project implements a basic home automation system using the 8051 microcontroller.  
+Devices such as a Lamp and Fan are controlled through serial commands received via UART.
 
-Commands received over UART are used to control two output devices (Lamp and Fan). The system also provides status feedback via serial communication.
+The system listens for user commands and switches devices ON or OFF accordingly, while sending status feedback through serial communication.
 
 ---
 
 ## 🎯 Objective
 
-To implement bidirectional UART communication and apply it to real-time device control using Embedded C.
+To design and implement a simple command-based home automation system using:
+
+- UART communication
+- GPIO control
+- Embedded C programming
 
 ---
 
-## 🔧 Features
+## ⚙️ Working Principle
 
-- UART initialization using Timer1 (Mode 2)
-- 9600 baud serial communication
-- GPIO control using `sbit`
-- Command-based device switching
-- Serial feedback to user
-- Continuous polling-based operation
+1. UART is initialized using Timer1 in Mode 2 (9600 baud).
+2. The system continuously waits for a character from the serial terminal.
+3. Based on the received command:
+
+   | Command | Action |
+   |----------|--------|
+   | '1' | Lamp ON |
+   | '2' | Lamp OFF |
+   | '3' | Fan ON |
+   | '4' | Fan OFF |
+
+4. The system sends a confirmation message back through UART.
 
 ---
 
-## 🛠 Hardware Used
+## 🔧 Hardware Used
 
 - 8051 Microcontroller
-- Serial communication interface (UART)
+- 11.0592 MHz Crystal Oscillator
 - LEDs (used to simulate Lamp & Fan)
+- UART Serial Interface
 - Keil uVision IDE
 
 ---
 
 ## 🧠 Concepts Applied
 
-- UART configuration (SCON, TMOD, TH1)
-- Serial buffer handling (SBUF)
-- Polling method using TI and RI flags
-- Bit-addressable port control
-- Switch-case command handling logic
-
-## 🗂 Repository Structure
-
-  
----
-
-## 📈 Future Improvements
-
-- Add interrupt-based UART
-- Add command validation
-- Add LCD feedback
-- Convert to reusable UART driver module
-
+- UART initialization using SCON, TMOD, TH1
+- Polling-based serial communication (TI & RI flags)
+- Bit-addressable GPIO using `sbit`
+- Command parsing logic
+- Embedded firmware structure
 
 ---
 
-
-
+## 📂 Repository Structure
 
